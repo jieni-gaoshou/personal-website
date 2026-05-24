@@ -76,20 +76,25 @@ const AboutPage = () => {
       {/* Background */}
       <div className="pointer-events-none absolute inset-0">
         <div className="diagonal-stripe absolute inset-0" />
-        <div className="absolute top-0 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-neon/5 blur-[120px] animate-float" />
-        <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-cyan/3 blur-[80px] animate-float" style={{ animationDelay: "3s" }} />
+        <div className="absolute top-0 left-1/2 h-96 w-96 -translate-x-1/2 rounded-full bg-cyberpink/5 blur-[120px] animate-float" />
+        <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-electric/3 blur-[80px] animate-float" style={{ animationDelay: "3s" }} />
+        {/* Cyberpunk corner decorations */}
+        <div className="absolute top-0 left-0 w-16 h-16 border-l-2 border-t-2 border-cyberpink/20" />
+        <div className="absolute top-0 right-0 w-16 h-16 border-r-2 border-t-2 border-electric/20" />
+        <div className="absolute bottom-0 left-0 w-16 h-16 border-l-2 border-b-2 border-electric/20" />
+        <div className="absolute bottom-0 right-0 w-16 h-16 border-r-2 border-b-2 border-cyberpink/20" />
       </div>
 
       <div className="relative mx-auto max-w-6xl px-6 py-20">
         {/* Header */}
         <div className="mb-16 text-center opacity-0 animate-slide-up">
-          <div className="inline-flex items-center gap-2 rounded-full border border-neon/20 bg-neon/5 px-4 py-1.5 font-mono text-xs text-neon mb-6">
+          <div className="inline-flex items-center gap-2 rounded-full border border-electric/20 bg-electric/5 px-4 py-1.5 font-mono text-xs text-electric mb-6">
             <i className="fa-solid fa-user-astronaut text-[10px]"></i>
             <span className="tracking-widest">ABOUT ME</span>
           </div>
           <h1 className="font-orbitron text-4xl font-black tracking-tight md:text-5xl">
             <span className="text-white">关于</span>
-            <span className="text-neon neon-text">我</span>
+            <span className="text-cyberpink neon-text">我</span>
           </h1>
           <p className="mt-4 font-mono text-sm text-gray-500">
             一个热爱技术、热爱生活的开发者
@@ -99,17 +104,19 @@ const AboutPage = () => {
         <div className="grid gap-12 md:grid-cols-5">
           {/* Avatar & Intro */}
           <div className="md:col-span-2 opacity-0 animate-slide-right">
-            <div className="glass-card p-8 text-center">
+            <div className="glass-card p-8 text-center animate-pulse-glow">
               {/* Avatar */}
-              <div className="mx-auto mb-6 flex h-28 w-28 items-center justify-center rounded-full bg-gradient-to-br from-neon/20 via-deepblue/20 to-cyan/20 border-2 border-neon/20 relative group">
-                <i className="fa-solid fa-user-astronaut text-5xl text-neon/60 group-hover:scale-110 transition-transform duration-500"></i>
+              <div className="mx-auto mb-6 flex h-28 w-28 items-center justify-center rounded-full bg-gradient-to-br from-cyberpink/20 via-plasma/20 to-electric/20 border-2 border-cyberpink/20 relative group">
+                <i className="fa-solid fa-user-astronaut text-5xl text-cyberpink/60 group-hover:scale-110 transition-transform duration-500"></i>
                 {/* Orbit ring */}
-                <div className="absolute inset-0 rounded-full border border-neon/10 animate-spin" style={{ animationDuration: "8s" }} />
+                <div className="absolute inset-0 rounded-full border border-cyberpink/10 animate-spin" style={{ animationDuration: "8s" }} />
+                {/* Glow pulse */}
+                <div className="absolute inset-0 rounded-full bg-cyberpink/10 animate-ping" style={{ animationDuration: "2s" }} />
               </div>
               <h2 className="font-orbitron text-xl font-bold text-white mb-2">
                 {siteConfig.author}
               </h2>
-              <p className="font-mono text-xs text-cyan mb-5">
+              <p className="font-mono text-xs text-electric mb-5">
                 {siteConfig.authorRole}
               </p>
               <p className="font-mono text-sm leading-relaxed text-gray-400 whitespace-pre-line">
@@ -121,9 +128,9 @@ const AboutPage = () => {
                 {stats.map((stat) => (
                   <div
                     key={stat.label}
-                    className="rounded-lg border border-navy/30 bg-navy/20 p-3 hover:border-neon/20 transition-colors"
+                    className="rounded-lg border border-cyberpink/20 bg-cyberpink/5 p-3 hover:border-cyberpink/40 transition-colors"
                   >
-                    <div className="font-orbitron text-lg font-bold text-neon">
+                    <div className="font-orbitron text-lg font-bold text-cyberpink">
                       {stat.value}
                     </div>
                     <div className="font-mono text-[9px] text-gray-600 mt-0.5 tracking-wider">
@@ -139,7 +146,7 @@ const AboutPage = () => {
                   href={siteConfig.social.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-navy/40 text-gray-500 hover:border-neon/40 hover:text-neon hover:shadow-lg hover:shadow-neon/10 transition-all hover:-translate-y-0.5"
+                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-navy/40 text-gray-500 hover:border-cyberpink/40 hover:text-cyberpink hover:shadow-lg hover:shadow-cyberpink/10 transition-all hover:-translate-y-0.5"
                   aria-label="GitHub"
                 >
                   <i className="fa-brands fa-github text-lg"></i>
@@ -148,14 +155,14 @@ const AboutPage = () => {
                   href={siteConfig.social.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-navy/40 text-gray-500 hover:border-cyan/40 hover:text-cyan hover:shadow-lg hover:shadow-cyan/10 transition-all hover:-translate-y-0.5"
+                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-navy/40 text-gray-500 hover:border-electric/40 hover:text-electric hover:shadow-lg hover:shadow-electric/10 transition-all hover:-translate-y-0.5"
                   aria-label="Twitter"
                 >
                   <i className="fa-brands fa-x-twitter text-lg"></i>
                 </a>
                 <a
                   href={siteConfig.social.email}
-                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-navy/40 text-gray-500 hover:border-neon/40 hover:text-neon hover:shadow-lg hover:shadow-neon/10 transition-all hover:-translate-y-0.5"
+                  className="flex h-10 w-10 items-center justify-center rounded-lg border border-navy/40 text-gray-500 hover:border-cyberpink/40 hover:text-cyberpink hover:shadow-lg hover:shadow-cyberpink/10 transition-all hover:-translate-y-0.5"
                   aria-label="Email"
                 >
                   <i className="fa-solid fa-envelope text-lg"></i>

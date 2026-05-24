@@ -87,17 +87,22 @@ const BlogList = () => {
       {/* Background */}
       <div className="pointer-events-none absolute inset-0">
         <div className="diagonal-stripe absolute inset-0" />
-        <div className="absolute top-0 right-0 h-64 w-64 rounded-full bg-neon/5 blur-[80px] animate-float" />
+        <div className="absolute top-0 right-0 h-64 w-64 rounded-full bg-cyberpink/5 blur-[80px] animate-float" />
         <div
-          className="absolute bottom-0 left-0 h-80 w-80 rounded-full bg-cyan/5 blur-[100px] animate-float"
+          className="absolute bottom-0 left-0 h-80 w-80 rounded-full bg-electric/5 blur-[100px] animate-float"
           style={{ animationDelay: "3s" }}
         />
+        {/* Cyberpunk grid */}
+        <div className="absolute inset-0 opacity-[0.02]" style={{
+          backgroundImage: "linear-gradient(rgba(255, 0, 110, 0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 245, 255, 0.5) 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
+        }} />
       </div>
 
       <div className="relative mx-auto max-w-6xl px-6 py-20">
         {/* Header */}
         <div className="mb-12 text-center opacity-0 animate-slide-up">
-          <div className="inline-flex items-center gap-2 rounded-full border border-cyan/20 bg-cyan/5 px-4 py-1.5 font-mono text-xs text-cyan mb-6">
+          <div className="inline-flex items-center gap-2 rounded-full border border-cyberpink/20 bg-cyberpink/5 px-4 py-1.5 font-mono text-xs text-cyberpink mb-6">
             <i className="fa-solid fa-newspaper text-[10px]"></i>
             <span className="tracking-widest">ALL POSTS</span>
             <span className="text-gray-600">·</span>
@@ -107,12 +112,12 @@ const BlogList = () => {
           </div>
           <h1 className="font-orbitron text-4xl font-black tracking-tight md:text-5xl">
             <span className="text-white">文章</span>
-            <span className="text-cyan neon-text-cyan">列表</span>
+            <span className="text-cyberpink neon-text">列表</span>
           </h1>
           <p className="mt-4 font-mono text-sm text-gray-500">
-            <i className="fa-solid fa-quote-left text-neon/40 mr-2"></i>
+            <i className="fa-solid fa-quote-left text-cyberpink/40 mr-2"></i>
             每一篇文章，都是向宇宙发出的一束光
-            <i className="fa-solid fa-quote-right text-neon/40 ml-2"></i>
+            <i className="fa-solid fa-quote-right text-cyberpink/40 ml-2"></i>
           </p>
         </div>
 
