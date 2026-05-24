@@ -269,12 +269,12 @@ const AdminPage = () => {
       <div className="relative min-h-screen overflow-hidden">
         <div className="pointer-events-none absolute inset-0">
           <div className="diagonal-stripe absolute inset-0" />
-          <div className="absolute top-0 right-0 h-64 w-64 rounded-full bg-neon/5 blur-[80px] animate-float" />
+          <div className="absolute top-0 right-0 h-64 w-64 rounded-full bg-cyberpink/5 blur-[80px] animate-float" />
         </div>
         <div className="relative mx-auto flex min-h-screen max-w-md flex-col items-center justify-center px-6">
-          <div className="w-full rounded-2xl border border-navy/40 bg-navy/30 backdrop-blur-xl p-8 shadow-2xl shadow-neon/5">
+          <div className="w-full rounded-2xl border border-cyberpink/20 bg-navy/30 backdrop-blur-xl p-8 shadow-2xl shadow-cyberpink/5">
             <div className="mb-6 text-center">
-              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-neon/10 text-neon">
+              <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-cyberpink/10 text-cyberpink">
                 <i className="fa-solid fa-lock text-2xl"></i>
               </div>
               <h1 className="font-orbitron text-2xl font-black text-white">后台管理</h1>
@@ -286,13 +286,13 @@ const AdminPage = () => {
               value={adminKey}
               onChange={(e) => setAdminKey(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleLogin()}
-              className="mb-4 w-full rounded-lg border border-navy/40 bg-navy/60 px-4 py-3 font-mono text-sm text-white placeholder-gray-600 outline-none transition-all focus:border-neon/40 focus:shadow-lg focus:shadow-neon/5"
+              className="mb-4 w-full rounded-lg border border-navy/40 bg-navy/60 px-4 py-3 font-mono text-sm text-white placeholder-gray-600 outline-none transition-all focus:border-cyberpink/40 focus:shadow-lg focus:shadow-cyberpink/5"
               autoFocus
             />
             <button
               onClick={handleLogin}
               disabled={loading || !adminKey.trim()}
-              className="w-full rounded-lg bg-neon py-3 font-mono text-sm font-semibold text-white transition-all hover:bg-neon/80 disabled:opacity-40 disabled:cursor-not-allowed"
+              className="w-full rounded-lg bg-cyberpink py-3 font-mono text-sm font-semibold text-white transition-all hover:bg-cyberpink/80 disabled:opacity-40 disabled:cursor-not-allowed"
             >
               {loading ? (
                 <span className="flex items-center justify-center gap-2">
@@ -306,7 +306,7 @@ const AdminPage = () => {
                 </span>
               )}
             </button>
-            <Link to="/" className="mt-4 block text-center font-mono text-xs text-gray-600 hover:text-cyan transition-colors">
+            <Link to="/" className="mt-4 block text-center font-mono text-xs text-gray-600 hover:text-electric transition-colors">
               <i className="fa-solid fa-arrow-left mr-1"></i>返回首页
             </Link>
           </div>
@@ -320,41 +320,42 @@ const AdminPage = () => {
     <div className="relative min-h-screen overflow-hidden">
       <div className="pointer-events-none absolute inset-0">
         <div className="diagonal-stripe absolute inset-0" />
-        <div className="absolute top-0 right-0 h-64 w-64 rounded-full bg-neon/5 blur-[80px] animate-float" />
+        <div className="absolute top-0 right-0 h-64 w-64 rounded-full bg-cyberpink/5 blur-[80px] animate-float" />
+        <div className="absolute bottom-0 left-0 h-64 w-64 rounded-full bg-electric/5 blur-[80px] animate-float" style={{ animationDelay: "2s" }} />
       </div>
 
       <div className="relative mx-auto max-w-6xl px-6 py-12">
         <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
           <div>
             <h1 className="font-orbitron text-2xl font-black text-white">
-              <i className="fa-solid fa-gear text-neon mr-3"></i>后台管理
+              <i className="fa-solid fa-gear text-cyberpink mr-3"></i>后台管理
             </h1>
             <p className="mt-1 font-mono text-xs text-gray-600">管理博客文章 · 共 {posts.length} 篇</p>
           </div>
           <div className="flex items-center gap-3">
             <button
               onClick={handleNewPost}
-              className="flex items-center gap-2 rounded-lg bg-neon px-4 py-2 font-mono text-sm text-white hover:bg-neon/80 transition-all"
+              className="flex items-center gap-2 rounded-lg bg-cyberpink px-4 py-2 font-mono text-sm text-white hover:bg-cyberpink/80 transition-all"
             >
               <i className="fa-solid fa-plus"></i>写文章
             </button>
             <button
               onClick={handleSeed}
               disabled={loading}
-              className="flex items-center gap-2 rounded-lg border border-cyan/30 px-4 py-2 font-mono text-xs text-cyan hover:bg-cyan/10 transition-all disabled:opacity-40"
+              className="flex items-center gap-2 rounded-lg border border-electric/30 px-4 py-2 font-mono text-xs text-electric hover:bg-electric/10 transition-all disabled:opacity-40"
             >
               <i className="fa-solid fa-cloud-arrow-up"></i>导入数据
             </button>
-            <Link to="/blog" className="flex items-center gap-2 font-mono text-xs text-gray-500 hover:text-neon transition-colors">
+            <Link to="/blog" className="flex items-center gap-2 font-mono text-xs text-gray-500 hover:text-cyberpink transition-colors">
               <i className="fa-solid fa-eye"></i>预览
             </Link>
-            <button onClick={handleLogout} className="font-mono text-xs text-gray-600 hover:text-neon transition-colors">
+            <button onClick={handleLogout} className="font-mono text-xs text-gray-600 hover:text-cyberpink transition-colors">
               <i className="fa-solid fa-right-from-bracket"></i>退出
             </button>
             <button
               onClick={() => setShowAiPanel(!showAiPanel)}
               className={`flex items-center gap-2 rounded-lg border px-4 py-2 font-mono text-xs transition-all ${
-                showAiPanel ? "border-purple-400/50 bg-purple-500/10 text-purple-300" : "border-purple-500/20 text-purple-400/60 hover:bg-purple-500/5"
+                showAiPanel ? "border-plasma/50 bg-plasma/10 text-plasma" : "border-plasma/20 text-plasma/60 hover:bg-plasma/5"
               }`}
             >
               <i className="fa-solid fa-wand-magic-sparkles"></i>AI 助手

@@ -109,18 +109,24 @@ const AIChat = () => {
       {/* 背景装饰 */}
       <div className="pointer-events-none absolute inset-0">
         <div className="diagonal-stripe absolute inset-0" />
-        <div className="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-cyan/3 blur-[120px] animate-float" />
-        <div className="absolute bottom-1/4 right-1/4 h-80 w-80 rounded-full bg-purple-500/3 blur-[100px] animate-float" style={{ animationDelay: "2s" }} />
+        <div className="absolute top-1/4 left-1/4 h-96 w-96 rounded-full bg-plasma/5 blur-[120px] animate-float" />
+        <div className="absolute bottom-1/4 right-1/4 h-80 w-80 rounded-full bg-cyberpink/3 blur-[100px] animate-float" style={{ animationDelay: "2s" }} />
+        {/* Scan line effect */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyberpink/30 to-transparent animate-scan-line" />
+        </div>
       </div>
 
       <div className="relative mx-auto flex h-[calc(100vh-5rem)] max-w-3xl flex-col px-4">
         {/* Header */}
         <div className="flex-shrink-0 py-6 text-center">
-          <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan/20 to-purple-500/20 border border-cyan/20">
-            <i className="fa-solid fa-robot text-2xl text-cyan"></i>
+          <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-cyberpink/20 to-plasma/20 border border-cyberpink/20 relative">
+            <i className="fa-solid fa-robot text-2xl text-cyberpink"></i>
+            {/* Status indicator */}
+            <span className="absolute -bottom-1 -right-1 h-4 w-4 rounded-full bg-cybergreen border-2 border-void animate-pulse" />
           </div>
           <h1 className="font-orbitron text-xl font-black text-white">
-            AI 舱 · 星语
+            AI 舱 · <span className="text-cyberpink">星语</span>
           </h1>
           <p className="mt-1 font-mono text-[10px] text-gray-600">
             星际驿站的 AI 助手 · 随时陪你聊聊
@@ -139,7 +145,7 @@ const AIChat = () => {
                     setInput(s);
                     setTimeout(() => sendMessage(), 50);
                   }}
-                  className="rounded-full border border-navy/40 bg-navy/30 px-4 py-2 font-mono text-xs text-gray-400 hover:border-cyan/30 hover:text-cyan hover:bg-cyan/5 transition-all"
+                  className="rounded-full border border-cyberpink/20 bg-cyberpink/5 px-4 py-2 font-mono text-xs text-gray-400 hover:border-cyberpink/40 hover:text-cyberpink hover:bg-cyberpink/10 transition-all"
                 >
                   {s}
                 </button>
@@ -156,8 +162,8 @@ const AIChat = () => {
               <div
                 className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-xs ${
                   msg.role === "assistant"
-                    ? "bg-cyan/20 text-cyan border border-cyan/20"
-                    : "bg-neon/20 text-neon border border-neon/20"
+                    ? "bg-cyberpink/20 text-cyberpink border border-cyberpink/20"
+                    : "bg-electric/20 text-electric border border-electric/20"
                 }`}
               >
                 <i className={`fa-solid ${msg.role === "assistant" ? "fa-robot" : "fa-user-astronaut"}`}></i>
@@ -167,8 +173,8 @@ const AIChat = () => {
               <div
                 className={`group max-w-[75%] rounded-2xl px-4 py-3 font-mono text-sm leading-relaxed ${
                   msg.role === "assistant"
-                    ? "bg-navy/40 border border-navy/30 text-gray-200 rounded-tl-sm"
-                    : "bg-neon/10 border border-neon/20 text-gray-200 rounded-tr-sm"
+                    ? "bg-navy/40 border border-cyberpink/15 text-gray-200 rounded-tl-sm"
+                    : "bg-cyberpink/10 border border-cyberpink/20 text-gray-200 rounded-tr-sm"
                 } ${msg.id === "welcome" ? "animate-slide-up" : ""}`}
               >
                 <div className="ai-message prose-sm prose-invert break-words">
@@ -176,7 +182,7 @@ const AIChat = () => {
                     remarkPlugins={[remarkGfm]}
                     components={{
                       code: ({ children, ...props }) => (
-                        <code className="bg-navy/60 px-1 rounded text-cyan text-xs" {...props}>
+                        <code className="bg-navy/60 px-1 rounded text-cyberpink text-xs" {...props}>
                           {children}
                         </code>
                       ),
@@ -195,14 +201,14 @@ const AIChat = () => {
           {/* 加载中 */}
           {loading && (
             <div className="flex gap-3">
-              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-cyan/20 text-cyan border border-cyan/20 text-xs">
+              <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-cyberpink/20 text-cyberpink border border-cyberpink/20 text-xs">
                 <i className="fa-solid fa-robot"></i>
               </div>
-              <div className="rounded-2xl rounded-tl-sm bg-navy/40 border border-navy/30 px-4 py-3">
+              <div className="rounded-2xl rounded-tl-sm bg-navy/40 border border-cyberpink/15 px-4 py-3">
                 <div className="flex items-center gap-1.5">
-                  <span className="h-2 w-2 rounded-full bg-cyan/50 animate-pulse" style={{ animationDelay: "0ms" }}></span>
-                  <span className="h-2 w-2 rounded-full bg-cyan/50 animate-pulse" style={{ animationDelay: "150ms" }}></span>
-                  <span className="h-2 w-2 rounded-full bg-cyan/50 animate-pulse" style={{ animationDelay: "300ms" }}></span>
+                  <span className="h-2 w-2 rounded-full bg-cyberpink/50 animate-pulse" style={{ animationDelay: "0ms" }}></span>
+                  <span className="h-2 w-2 rounded-full bg-cyberpink/50 animate-pulse" style={{ animationDelay: "150ms" }}></span>
+                  <span className="h-2 w-2 rounded-full bg-cyberpink/50 animate-pulse" style={{ animationDelay: "300ms" }}></span>
                 </div>
               </div>
             </div>
@@ -213,7 +219,7 @@ const AIChat = () => {
 
         {/* 输入区 */}
         <div className="flex-shrink-0 py-4">
-          <div className="flex items-center gap-3 rounded-2xl border border-navy/40 bg-navy/30 backdrop-blur-xl px-4 py-2 shadow-lg shadow-neon/5">
+          <div className="flex items-center gap-3 rounded-2xl border border-cyberpink/20 bg-navy/30 backdrop-blur-xl px-4 py-2 shadow-lg shadow-cyberpink/5">
             <input
               ref={inputRef}
               type="text"
@@ -228,7 +234,7 @@ const AIChat = () => {
             <button
               onClick={sendMessage}
               disabled={loading || !input.trim()}
-              className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyan/20 text-cyan hover:bg-cyan hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+              className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyberpink/20 text-cyberpink hover:bg-cyberpink hover:text-white transition-all disabled:opacity-30 disabled:cursor-not-allowed"
             >
               <i className={`fa-solid ${loading ? "fa-spinner animate-spin" : "fa-paper-plane"}`}></i>
             </button>

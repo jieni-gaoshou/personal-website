@@ -103,11 +103,14 @@ const BlogPost = () => {
       {/* Background */}
       <div className="pointer-events-none absolute inset-0">
         <div className="diagonal-stripe absolute inset-0" />
-        <div className="absolute top-0 right-0 h-96 w-96 rounded-full bg-neon/3 blur-[100px] animate-float" />
+        <div className="absolute top-0 right-0 h-96 w-96 rounded-full bg-cyberpink/3 blur-[100px] animate-float" />
         <div
-          className="absolute bottom-0 left-0 h-64 w-64 rounded-full bg-cyan/3 blur-[80px] animate-float"
+          className="absolute bottom-0 left-0 h-64 w-64 rounded-full bg-electric/3 blur-[80px] animate-float"
           style={{ animationDelay: "3s" }}
         />
+        {/* Cyberpunk corner decorations */}
+        <div className="absolute top-0 left-0 w-12 h-12 border-l-2 border-t-2 border-cyberpink/20" />
+        <div className="absolute top-0 right-0 w-12 h-12 border-r-2 border-t-2 border-electric/20" />
       </div>
 
       {/* Table of Contents - Sidebar */}
@@ -129,7 +132,7 @@ const BlogPost = () => {
             {(post.tags || []).map((tag) => (
               <span
                 key={tag}
-                className="rounded-md border border-neon/15 bg-neon/5 px-2.5 py-0.5 font-mono text-[10px] text-neon/70 tracking-wider"
+                className="rounded-md border border-cyberpink/15 bg-cyberpink/5 px-2.5 py-0.5 font-mono text-[10px] text-cyberpink/70 tracking-wider"
               >
                 #{tag}
               </span>
@@ -140,15 +143,15 @@ const BlogPost = () => {
           </h1>
           <div className="mt-4 flex items-center gap-4 font-mono text-xs text-gray-600 tracking-wider">
             <span>
-              <i className="fa-solid fa-calendar text-neon/40 mr-1.5"></i>
+              <i className="fa-solid fa-calendar text-cyberpink/40 mr-1.5"></i>
               {post.date}
             </span>
             <span>
-              <i className="fa-solid fa-clock text-cyan/40 mr-1.5"></i>
+              <i className="fa-solid fa-clock text-electric/40 mr-1.5"></i>
               {post.readTime || "5 分钟"}
             </span>
           </div>
-          <div className="mt-6 h-[1px] bg-gradient-to-r from-neon/30 via-cyan/30 to-transparent" />
+          <div className="mt-6 h-[1px] bg-gradient-to-r from-cyberpink/30 via-electric/30 to-transparent" />
         </header>
 
         {/* Content */}
