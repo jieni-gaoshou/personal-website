@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import { siteConfig } from "../lib/siteConfig";
 import GlitchText from "./GlitchText";
+import ThemeToggle from "./ThemeToggle";
 
 const ADMIN_KEY = "blog_admin_key";
 
@@ -34,7 +35,7 @@ const Navbar = () => {
   }, [menuOpen]);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-void/80 backdrop-blur-lg border-b border-cyberpink/20">
+    <header className="sticky top-0 z-50 w-full bg-[var(--bg-primary)]/80 backdrop-blur-lg border-b border-[var(--border-color)] theme-transition">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
         {/* Logo */}
         <Link
@@ -64,7 +65,7 @@ const Navbar = () => {
                 className={`relative px-4 py-2 font-mono text-sm tracking-wide transition-all duration-300 rounded-lg ${
                   isActive
                     ? "text-cyberpink bg-cyberpink/10"
-                    : "text-gray-400 hover:text-gray-200 hover:bg-navy/30"
+                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]/30"
                 }`}
               >
                 <i className={`${link.icon} mr-2 text-xs`}></i>
@@ -75,10 +76,15 @@ const Navbar = () => {
               </Link>
             );
           })}
+        </div>
+
+        {/* Right side: Theme toggle + Admin */}
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
           {showAdmin && (
             <Link
               to="/admin"
-              className="ml-2 px-2 py-1 font-mono text-xs text-gray-700 hover:text-cyberpink/60 transition-colors"
+              className="px-2 py-1 font-mono text-xs text-gray-700 hover:text-cyberpink/60 transition-colors"
               title="后台管理"
             >
               <i className="fa-solid fa-gear"></i>
@@ -89,7 +95,7 @@ const Navbar = () => {
         {/* Mobile Menu Toggle */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="block md:hidden text-gray-400 hover:text-cyberpink transition-colors p-1"
+          className="block md:hidden text-[var(--text-secondary)] hover:text-cyberpink transition-colors p-1"
           aria-label="Toggle menu"
         >
           <i className={`fa-solid text-lg transition-transform duration-300 ${menuOpen ? "fa-xmark rotate-90" : "fa-bars"}`}></i>
@@ -99,7 +105,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <div
         ref={menuRef}
-        className={`md:hidden border-t border-cyberpink/20 bg-void/98 backdrop-blur-lg transition-all duration-300 ${
+        className={`md:hidden border-t border-[var(--border-color)] bg-[var(--bg-primary)]/98 backdrop-blur-lg transition-all duration-300 ${
           menuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0 pointer-events-none"
         }`}
       >
@@ -114,7 +120,7 @@ const Navbar = () => {
                 className={`font-mono text-sm tracking-wide transition-all duration-200 px-3 py-2 rounded-lg ${
                   isActive
                     ? "text-cyberpink bg-cyberpink/10"
-                    : "text-gray-400 hover:text-gray-200 hover:bg-navy/20"
+                    : "text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--bg-secondary)]/20"
                 }`}
               >
                 <i className={`${link.icon} mr-2 text-xs`}></i>
@@ -126,7 +132,7 @@ const Navbar = () => {
             <Link
               to="/admin"
               onClick={() => setMenuOpen(false)}
-              className="font-mono text-sm tracking-wide transition-all duration-200 px-3 py-2 rounded-lg text-gray-700 hover:text-cyberpink/60"
+              className="font-mono text-sm tracking-wide transition-all duration-200 px-3 py-2 rounded-lg text-[var(--text-muted)] hover:text-cyberpink/60"
             >
               <i className="fa-solid fa-gear mr-2 text-xs"></i>
               后台管理

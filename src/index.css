@@ -2,6 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
+/* === CSS Variables for Theming === */
+:root {
+  --bg-primary: #0A0A0A;
+  --bg-secondary: #1A1A2E;
+  --bg-card: rgba(26, 26, 46, 0.55);
+  --text-primary: #e0e0e0;
+  --text-secondary: #c0c0c0;
+  --text-muted: #888888;
+  --accent-primary: #8B5CF6;
+  --accent-secondary: #6366F1;
+  --border-color: rgba(139, 92, 246, 0.1);
+  --border-hover: rgba(139, 92, 246, 0.35);
+  --shadow-color: rgba(139, 92, 246, 0.12);
+  --scrollbar-track: #0A0A0A;
+  --scrollbar-thumb: linear-gradient(180deg, #312E81, #8B5CF6);
+  --selection-bg: rgba(139, 92, 246, 0.3);
+  /* Cyberpunk colors */
+  --cyberpink: #FF006E;
+  --electric: #00F5FF;
+  --cybergreen: #39FF14;
+  --plasma: #BD00FF;
+}
+
+/* Light Theme */
+.light {
+  --bg-primary: #f5f7fa;
+  --bg-secondary: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --text-primary: #1a1a2e;
+  --text-secondary: #4a4a5e;
+  --text-muted: #888888;
+  --accent-primary: #6366F1;
+  --accent-secondary: #8B5CF6;
+  --border-color: rgba(99, 102, 241, 0.15);
+  --border-hover: rgba(99, 102, 241, 0.4);
+  --shadow-color: rgba(99, 102, 241, 0.15);
+  --scrollbar-track: #f5f7fa;
+  --scrollbar-thumb: linear-gradient(180deg, #8B5CF6, #6366F1);
+  --selection-bg: rgba(99, 102, 241, 0.25);
+}
+
 /* === Base Styles === */
 @layer base {
   * {
@@ -27,9 +68,10 @@
 
   body {
     font-family: 'JetBrains Mono', monospace;
-    background-color: #0A0A0A;
-    color: #e0e0e0;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   ::-webkit-scrollbar {
@@ -37,20 +79,20 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #0A0A0A;
+    background: var(--scrollbar-track);
   }
 
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #312E81, #8B5CF6);
+    background: var(--scrollbar-thumb);
     border-radius: 3px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #8B5CF6;
+    background: var(--accent-primary);
   }
 
   ::selection {
-    background: rgba(139, 92, 246, 0.3);
+    background: var(--selection-bg);
     color: #fff;
   }
 }
@@ -459,6 +501,139 @@
 @keyframes orbitSpin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+/* === NEW ENTRANCE ANIMATIONS === */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes flipIn {
+  from {
+    opacity: 0;
+    transform: rotateY(-90deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotateY(0);
+  }
+}
+
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Animation utility classes */
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-flip-in {
+  animation: flipIn 0.6s ease forwards;
+}
+
+/* Stagger delays for child elements */
+.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.15s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.25s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.35s; }
+.stagger-children > *:nth-child(7) { animation-delay: 0.4s; }
+.stagger-children > *:nth-child(8) { animation-delay: 0.45s; }
+
+/* Theme transition for cards */
+.theme-transition {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 /* === Mobile optimizations === */

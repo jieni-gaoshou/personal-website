@@ -5,6 +5,7 @@ import remarkGfm from "remark-gfm";
 import { callBlogApi } from "../lib/cloudbase";
 import fallbackPosts, { type BlogPost as BlogPostData } from "../data/posts";
 import TableOfContents from "../components/TableOfContents";
+import Comments from "../components/Comments";
 
 
 const BlogPost = () => {
@@ -256,20 +257,23 @@ const BlogPost = () => {
           <div className="flex items-center justify-between flex-wrap gap-4">
             <Link
               to="/blog"
-              className="inline-flex items-center gap-2 rounded-lg border border-navy/40 px-5 py-2.5 font-mono text-xs text-gray-400 hover:border-neon/30 hover:text-neon transition-all"
+              className="inline-flex items-center gap-2 rounded-lg border border-[var(--border-color)] px-5 py-2.5 font-mono text-xs text-[var(--text-secondary)] hover:border-cyberpink/30 hover:text-cyberpink transition-all"
             >
               <i className="fa-solid fa-arrow-left"></i>
               全部文章
             </Link>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="inline-flex items-center gap-2 font-mono text-xs text-gray-600 hover:text-cyan transition-colors"
+              className="inline-flex items-center gap-2 font-mono text-xs text-[var(--text-muted)] hover:text-cyberpink transition-colors"
             >
               <i className="fa-solid fa-arrow-up"></i>
               回到顶部
             </button>
           </div>
         </div>
+
+        {/* Comments Section */}
+        <Comments postId={id || ""} />
       </article>
     </div>
   );

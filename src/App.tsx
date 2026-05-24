@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "./context/ThemeContext";
 // 首页首屏关键路径——立即加载
 import HomePage from "./pages/HomePage";
 import Navbar from "./components/Navbar";
@@ -75,8 +76,9 @@ function App() {
   }, []);
 
   return (
+    <ThemeProvider>
     <Router>
-      <div className="relative flex min-h-screen flex-col bg-void text-gray-100">
+      <div className="relative flex min-h-screen flex-col bg-[var(--bg-primary)] text-[var(--text-primary)] theme-transition">
         <StarBackground />
         <ParticleField />
         <CustomCursor />
@@ -102,6 +104,7 @@ function App() {
         {toast && <KeyboardToast shortcut={toast.shortcut} label={toast.label} onClose={() => setToast(null)} />}
       </div>
     </Router>
+    </ThemeProvider>
   );
 }
 

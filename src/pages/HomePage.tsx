@@ -7,6 +7,8 @@ import RippleButton from "../components/RippleButton";
 import MagneticButton from "../components/MagneticButton";
 import GlassCard3D from "../components/GlassCard3D";
 import HolographicEffect from "../components/HolographicEffect";
+import Guestbook from "../components/Guestbook";
+import VisitorCounter from "../components/VisitorCounter";
 
 const typingTexts = [
   "探索代码与思想的无限宇宙",
@@ -140,19 +142,22 @@ const HomePage = () => {
             <div className="mt-10 flex gap-8 opacity-0 animate-fade-in anim-delay-5">
               <div className="text-center">
                 <div className="font-orbitron text-2xl font-bold text-cyberpink neon-text">{posts.length}+</div>
-                <div className="font-mono text-[10px] text-gray-600 mt-1 tracking-wider">篇文章</div>
+                <div className="font-mono text-[10px] text-[var(--text-muted)] mt-1 tracking-wider">篇文章</div>
               </div>
               <div className="text-center">
                 <div className="font-orbitron text-2xl font-bold text-electric neon-text-cyan">{siteConfig.stats.commits}</div>
-                <div className="font-mono text-[10px] text-gray-600 mt-1 tracking-wider">次提交</div>
+                <div className="font-mono text-[10px] text-[var(--text-muted)] mt-1 tracking-wider">次提交</div>
               </div>
               <div className="text-center">
                 <div className="font-orbitron text-2xl font-bold text-cybergreen">{siteConfig.stats.projects}</div>
-                <div className="font-mono text-[10px] text-gray-600 mt-1 tracking-wider">个项目</div>
+                <div className="font-mono text-[10px] text-[var(--text-muted)] mt-1 tracking-wider">个项目</div>
               </div>
               <div className="text-center">
                 <div className="font-orbitron text-2xl font-bold text-cyberyellow">{siteConfig.stats.techStacks}</div>
-                <div className="font-mono text-[10px] text-gray-600 mt-1 tracking-wider">技术栈</div>
+                <div className="font-mono text-[10px] text-[var(--text-muted)] mt-1 tracking-wider">技术栈</div>
+              </div>
+              <div className="text-center">
+                <VisitorCounter />
               </div>
             </div>
           </div>
@@ -266,6 +271,9 @@ const HomePage = () => {
           </Link>
         </div>
       </section>
+
+      {/* Guestbook */}
+      <Guestbook />
     </div>
   );
 };
