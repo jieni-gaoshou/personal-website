@@ -34,7 +34,7 @@ const Navbar = () => {
   }, [menuOpen]);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-void/80 backdrop-blur-lg border-b border-navy/30">
+    <header className="sticky top-0 z-50 w-full bg-void/80 backdrop-blur-lg border-b border-cyberpink/20">
       <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
         {/* Logo */}
         <Link
@@ -42,12 +42,12 @@ const Navbar = () => {
           className="group flex items-center gap-2 font-orbitron text-lg font-bold tracking-widest"
         >
           <GlitchText enableGlitch={true}>
-            <span className="text-neon group-hover:animate-glow transition-all duration-300">
+            <span className="text-cyberpink group-hover:animate-glow transition-all duration-300">
               &lt;
             </span>
-            <span className="text-white group-hover:text-neon transition-colors">ASTRO</span>
-            <span className="text-cyan">BLOG</span>
-            <span className="text-neon group-hover:animate-glow transition-all duration-300">
+            <span className="text-white group-hover:text-cyberpink transition-colors">ASTRO</span>
+            <span className="text-electric">BLOG</span>
+            <span className="text-cyberpink group-hover:animate-glow transition-all duration-300">
               /&gt;
             </span>
           </GlitchText>
@@ -63,14 +63,14 @@ const Navbar = () => {
                 to={link.to}
                 className={`relative px-4 py-2 font-mono text-sm tracking-wide transition-all duration-300 rounded-lg ${
                   isActive
-                    ? "text-neon bg-neon/10"
+                    ? "text-cyberpink bg-cyberpink/10"
                     : "text-gray-400 hover:text-gray-200 hover:bg-navy/30"
                 }`}
               >
                 <i className={`${link.icon} mr-2 text-xs`}></i>
                 {link.label}
                 {isActive && (
-                  <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 h-[2px] w-6 bg-neon neon-text rounded-full" />
+                  <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 h-[2px] w-6 bg-cyberpink rounded-full animate-pulse" />
                 )}
               </Link>
             );
@@ -78,7 +78,7 @@ const Navbar = () => {
           {showAdmin && (
             <Link
               to="/admin"
-              className="ml-2 px-2 py-1 font-mono text-xs text-gray-700 hover:text-neon/60 transition-colors"
+              className="ml-2 px-2 py-1 font-mono text-xs text-gray-700 hover:text-cyberpink/60 transition-colors"
               title="后台管理"
             >
               <i className="fa-solid fa-gear"></i>
@@ -89,7 +89,7 @@ const Navbar = () => {
         {/* Mobile Menu Toggle */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="block md:hidden text-gray-400 hover:text-neon transition-colors p-1"
+          className="block md:hidden text-gray-400 hover:text-cyberpink transition-colors p-1"
           aria-label="Toggle menu"
         >
           <i className={`fa-solid text-lg transition-transform duration-300 ${menuOpen ? "fa-xmark rotate-90" : "fa-bars"}`}></i>
@@ -99,7 +99,7 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <div
         ref={menuRef}
-        className={`md:hidden border-t border-navy/30 bg-void/98 backdrop-blur-lg transition-all duration-300 ${
+        className={`md:hidden border-t border-cyberpink/20 bg-void/98 backdrop-blur-lg transition-all duration-300 ${
           menuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0 pointer-events-none"
         }`}
       >
@@ -113,7 +113,7 @@ const Navbar = () => {
                 onClick={() => setMenuOpen(false)}
                 className={`font-mono text-sm tracking-wide transition-all duration-200 px-3 py-2 rounded-lg ${
                   isActive
-                    ? "text-neon bg-neon/10"
+                    ? "text-cyberpink bg-cyberpink/10"
                     : "text-gray-400 hover:text-gray-200 hover:bg-navy/20"
                 }`}
               >
@@ -126,7 +126,7 @@ const Navbar = () => {
             <Link
               to="/admin"
               onClick={() => setMenuOpen(false)}
-              className="font-mono text-sm tracking-wide transition-all duration-200 px-3 py-2 rounded-lg text-gray-700 hover:text-neon/60"
+              className="font-mono text-sm tracking-wide transition-all duration-200 px-3 py-2 rounded-lg text-gray-700 hover:text-cyberpink/60"
             >
               <i className="fa-solid fa-gear mr-2 text-xs"></i>
               后台管理
