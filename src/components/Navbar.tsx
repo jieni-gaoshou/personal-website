@@ -1,0 +1,141 @@
+import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { siteConfig } from "../lib/siteConfig";
+import GlitchText from "./GlitchText";
+
+const ADMIN_KEY = "blog_admin_key";
+
+const Navbar = () => {
+  const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [showAdmin, setShowAdmin] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setShowAdmin(!!sessionStorage.getItem(ADMIN_KEY));
+    const check = () => setShowAdmin(!!sessionStorage.getItem(ADMIN_KEY));
+    window.addEventListener("storage", check);
+    return () => window.removeEventListener("storage", check);
+  }, []);
+
+  // Close mobile menu on route change
+  useEffect(() => { setMenuOpen(false); }, [location.pathname]);
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    if (!menuOpen) return;
+    const handleClick = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [menuOpen]);
+
+  return (
+    <header className="sticky top-0 z-50 w-full bg-void/80 backdrop-blur-lg border-b border-navy/30">
+      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3">
+        {/* Logo */}
+        <Link
+          to="/"
+          className="group flex items-center gap-2 font-orbitron text-lg font-bold tracking-widest"
+        >
+          <GlitchText enableGlitch={true}>
+            <span className="text-neon group-hover:animate-glow transition-all duration-300">
+              &lt;
+            </span>
+            <span className="text-white group-hover:text-neon transition-colors">ASTRO</span>
+            <span className="text-cyan">BLOG</span>
+            <span className="text-neon group-hover:animate-glow transition-all duration-300">
+              /&gt;
+            </span>
+          </GlitchText>
+        </Link>
+
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-1">
+          {siteConfig.navLinks.map((link) => {
+            const isActive = location.pathname === link.to;
+            return (
+              <Link
+                key={link.to}
+                to={link.to}
+                className={`relative px-4 py-2 font-mono text-sm tracking-wide transition-all duration-300 rounded-lg ${
+                  isActive
+                    ? "text-neon bg-neon/10"
+                    : "text-gray-400 hover:text-gray-200 hover:bg-navy/30"
+                }`}
+              >
+                <i className={`${link.icon} mr-2 text-xs`}></i>
+                {link.label}
+                {isActive && (
+                  <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 h-[2px] w-6 bg-neon neon-text rounded-full" />
+                )}
+              </Link>
+            );
+          })}
+          {showAdmin && (
+            <Link
+              to="/admin"
+              className="ml-2 px-2 py-1 font-mono text-xs text-gray-700 hover:text-neon/60 transition-colors"
+              title="后台管理"
+            >
+              <i className="fa-solid fa-gear"></i>
+            </Link>
+          )}
+        </div>
+
+        {/* Mobile Menu Toggle */}
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="block md:hidden text-gray-400 hover:text-neon transition-colors p-1"
+          aria-label="Toggle menu"
+        >
+          <i className={`fa-solid text-lg transition-transform duration-300 ${menuOpen ? "fa-xmark rotate-90" : "fa-bars"}`}></i>
+        </button>
+      </nav>
+
+      {/* Mobile Menu */}
+      <div
+        ref={menuRef}
+        className={`md:hidden border-t border-navy/30 bg-void/98 backdrop-blur-lg transition-all duration-300 ${
+          menuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0 pointer-events-none"
+        }`}
+      >
+        <div className="mx-auto max-w-6xl px-6 py-4 flex flex-col gap-2">
+          {siteConfig.navLinks.map((link) => {
+            const isActive = location.pathname === link.to;
+            return (
+              <Link
+                key={link.to}
+                to={link.to}
+                onClick={() => setMenuOpen(false)}
+                className={`font-mono text-sm tracking-wide transition-all duration-200 px-3 py-2 rounded-lg ${
+                  isActive
+                    ? "text-neon bg-neon/10"
+                    : "text-gray-400 hover:text-gray-200 hover:bg-navy/20"
+                }`}
+              >
+                <i className={`${link.icon} mr-2 text-xs`}></i>
+                {link.label}
+              </Link>
+            );
+          })}
+          {showAdmin && (
+            <Link
+              to="/admin"
+              onClick={() => setMenuOpen(false)}
+              className="font-mono text-sm tracking-wide transition-all duration-200 px-3 py-2 rounded-lg text-gray-700 hover:text-neon/60"
+            >
+              <i className="fa-solid fa-gear mr-2 text-xs"></i>
+              后台管理
+            </Link>
+          )}
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default Navbar;

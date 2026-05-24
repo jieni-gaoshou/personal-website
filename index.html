@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta -->
+    <title>ASTRO BLOG — 星际博客 | Retro-Futuristic 技术博客</title>
+    <meta name="description" content="ASTRO BLOG — 星际博客，一个前端开发者的技术分享与思考空间。探索代码与思想的无限宇宙。涵盖 React、TypeScript、CloudBase、AI 等前沿技术。" />
+    <meta name="keywords" content="前端开发, React, TypeScript, CloudBase, 技术博客, 星际博客, 编程, 前端探险家" />
+    <meta name="author" content="前端探险家" />
+    <meta name="theme-color" content="#0A0A0A" />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- Robots -->
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://astro-blog.example.com" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://astro-blog.example.com" />
+    <meta property="og:title" content="ASTRO BLOG — 星际博客" />
+    <meta property="og:description" content="一个前端开发者的星际日志。记录技术探索、设计思考与生活观察。探索代码与思想的无限宇宙。" />
+    <meta property="og:image" content="https://astro-blog.example.com/og-image.png" />
+    <meta property="og:site_name" content="ASTRO BLOG" />
+    <meta property="og:locale" content="zh_CN" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://astro-blog.example.com" />
+    <meta name="twitter:title" content="ASTRO BLOG — 星际博客" />
+    <meta name="twitter:description" content="一个前端开发者的星际日志。探索代码与思想的无限宇宙。" />
+    <meta name="twitter:image" content="https://astro-blog.example.com/og-image.png" />
+
+    <!-- DNS 预解析 -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+
+    <!-- 预连接关键 CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- 预加载关键字体（避免 FOIT） -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+    />
+
+    <!-- Google Fonts（display=swap 防止文字不可见） -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      media="print"
+      onload="this.media='all';this.onload=null"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    </noscript>
+
+    <!-- JSON-LD 结构化数据 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "ASTRO BLOG",
+      "description": "一个前端开发者的星际日志。记录技术探索、设计思考与生活观察。",
+      "url": "https://astro-blog.example.com",
+      "author": {
+        "@type": "Person",
+        "name": "前端探险家",
+        "url": "https://astro-blog.example.com/about"
+      },
+      "inLanguage": "zh-CN",
+      "keywords": ["前端开发", "React", "TypeScript", "CloudBase", "技术博客"]
+    }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

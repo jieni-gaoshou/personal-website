@@ -1,0 +1,31 @@
+{
+  "version": "2.0",
+  "envId": "jieni1-d7gks8yga308ba2eb",
+  "$schema": "https://static.cloudbase.net/cli/cloudbaserc.schema.json",
+  "app": {
+    "buildCommand": "npm run build",
+    "outputDir": "dist",
+    "deployPath": "/"
+  },
+  "functionRoot": "cloudfunctions",
+  "functions": [
+    {
+      "name": "blog-api",
+      "runtime": "Nodejs18.15",
+      "handler": "index.main",
+      "timeout": 30,
+      "envVariables": {
+        "ADMIN_KEY": "blog-admin-key-2026"
+      }
+    },
+    {
+      "name": "ai-api",
+      "runtime": "Nodejs18.15",
+      "handler": "index.main",
+      "timeout": 60,
+      "envVariables": {
+        "MINIMAX_API_KEY": "sk-cp-p6AlhNYk0li_l6ChIC39Qkq4ALQ_rfgkuL4qvkU67xgF_eheEZS6_PqZYUe-foRed6RbrUBHqrpoMDbPjhHEQuoxKcKack9IyrbeMOflJmrIV9F7at8EmaQ"
+      }
+    }
+  ]
+}
